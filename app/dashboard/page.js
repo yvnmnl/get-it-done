@@ -14,7 +14,6 @@ export default function DashboardPage() {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
 
-  // Redirect if not logged in
   useEffect(() => {
     if (!loading && !user) router.push("/login");
   }, [loading, user, router]);
@@ -45,7 +44,6 @@ export default function DashboardPage() {
     <main className="min-h-screen flex justify-center p-6 bg-[#F4F4F4]">
       <div className="bg-white p-8 rounded-xl shadow-md max-w-2xl w-full border border-[#E5E5E4]">
         
-        {/* HEADER */}
         <h1 className="text-3xl font-bold mb-2 text-[#405845]">
           Your Tasks
         </h1>
@@ -57,17 +55,14 @@ export default function DashboardPage() {
           </span>
         </p>
 
-        {/* ADD TASK FORM */}
         <div className="mb-6">
           <AddTaskForm addTask={addTask} />
         </div>
 
-        {/* FILTER BUTTONS */}
         <div className="mb-6">
           <FilterButtons filter={filter} setFilter={setFilter} />
         </div>
 
-        {/* TASK LIST CARD */}
         <div className="bg-[#F9F9F8] rounded-lg p-4 border border-[#E5E5E4]">
           <TaskList
             tasks={filtered}

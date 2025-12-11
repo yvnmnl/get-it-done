@@ -4,7 +4,7 @@ export default function HomePage() {
       <div className="bg-white p-8 rounded-lg shadow max-w-lg text-center">
         <h1 className="text-4xl font-bold mb-4 text-[#405845]"> GetItDone </h1>
         <p className="text-gray-600 text-lg mb-6">
-          A simple task management app built with Next.js.  
+          A simple task management website.<br />  
           Create an account or log in to start managing your tasks.
         </p>
 
