@@ -7,13 +7,16 @@ import LogoutButton from "./LogoutButton";
 export default function Navbar() {
   const { user } = useAuth();
 
+  {console.log("NAVBAR USER:", user)}
+
+
   return (
-    <nav className="flex justify-between items-center px-6 py-4 bg-gray-900 text-white">
-      <Link href="/" className="font-bold text-xl">
+    <nav className="flex justify-between items-center px-6 py-4 bg-[#668962] text-[#1E1E1E]">
+      <Link href="/" className="font-bold text-3xl">
         GetItDone
       </Link>
 
-      <div className="flex gap-4 text-sm items-center">
+      <div className="flex gap-4 items-center">
         {!user && (
           <>
             <Link href="/login">Login</Link>
@@ -23,7 +26,7 @@ export default function Navbar() {
 
         {user && (
           <>
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/dashboard" className = "font-semibold">Dashboard</Link>
             <LogoutButton />
           </>
         )}
