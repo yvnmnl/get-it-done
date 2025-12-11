@@ -5,7 +5,7 @@
   --foreground: #171717;
 }
 
-@theme inline {
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -23,4 +23,21 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.font-quicksand {
+  font-family: var(--font-quicksand), sans-serif;
+}
+
+/* ✅ Tailwind v4 custom theme syntax */
+@theme {
+  --color-matcha-dark: #4D3E29;
+  --color-matcha-mocha: #6F6049;
+  --color-matcha-beige: #AC9B83;
+  --color-matcha-oat: #D0C6B9;
+  --color-matcha-gray: #E5E5E4;
+  --color-matcha-green: #405845;
+  --color-matcha-greensoft: #668962;
+  --color-matcha-sage: #8BA888;
+  --color-matcha-sagelight: #B7CDB5;
 }
