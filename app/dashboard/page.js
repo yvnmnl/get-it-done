@@ -42,17 +42,28 @@ export default function DashboardPage() {
   }
 
   async function toggleTask(id, currentState) {
-    if (!user) return;
-    await fetch(`/api/tasks/${id}`, {
+    console.log("TOGGLE CLICKED →", id, currentState);
+
+    const res = await fetch(`/api/tasks/${id}`, {
       method: "PATCH",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ completed: !currentState }),
     });
+
+    console.log("PATCH RESPONSE STATUS:", res.status);
+
     loadTasks();
   }
 
   async function deleteTask(id) {
-    if (!user) return;
-    await fetch(`/api/tasks/${id}`, { method: "DELETE" });
+    console.log("DELETE CLICKED →", id);
+
+    const res = await fetch(`/api/tasks/${id}`, {
+      method: "DELETE",
+    });
+
+    console.log("DELETE RESPONSE STATUS:", res.status);
+
     loadTasks();
   }
 

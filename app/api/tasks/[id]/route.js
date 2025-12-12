@@ -1,7 +1,8 @@
 import { adminDb } from "@/utils/firebaseAdmin";
 
-export async function PATCH(req, { params }) {
-  const { id } = params;
+export async function PATCH(req, context) {
+  const { id } = await context.params;
+
   const { completed } = await req.json();
 
   await adminDb.collection("tasks").doc(id).update({ completed });
@@ -9,8 +10,8 @@ export async function PATCH(req, { params }) {
   return new Response("Updated", { status: 200 });
 }
 
-export async function DELETE(req, { params }) {
-  const { id } = params;
+export async function DELETE(req, context) {
+  const { id } = await context.params;
 
   await adminDb.collection("tasks").doc(id).delete();
 

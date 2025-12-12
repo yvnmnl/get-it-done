@@ -3,14 +3,27 @@
 export default function TaskItem({ task, toggleTask, deleteTask }) {
   return (
     <li className="flex items-center justify-between p-3 bg-white rounded-lg border border-[#E5E5E4]">
-      <button
-        onClick={() => toggleTask(task.id)}
-        className={`flex-1 text-left cursor-pointer rounded px-2 py-1 transition
+      <span
+        className={`
+          flex-1 rounded px-2 py-1
           ${task.completed ? "line-through text-[#6F6049]" : "text-[#1E1E1E]"}
-          hover:bg-[#E5E5E4]
         `}
       >
         {task.text}
+      </span>
+      
+      <button
+        onClick={() => toggleTask(task.id, task.completed)}
+        className={`
+          ml-3 px-3 py-1.5 rounded text-sm font-medium transition
+          ${
+            task.completed
+              ? "bg-[#8BA888] text-white hover:bg-[#668962]"
+              : "bg-[#B7CDB5] text-[#405845] hover:bg-[#8BA888]"
+          }
+        `}
+      >
+        {task.completed ? "Completed" : "Complete"}
       </button>
 
       <button
