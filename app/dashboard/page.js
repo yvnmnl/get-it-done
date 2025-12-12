@@ -11,6 +11,8 @@ export default function DashboardPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
 
+  const [tasksLoading, setTasksLoading] = useState(true);
+
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
 
@@ -23,9 +25,13 @@ export default function DashboardPage() {
   async function loadTasks() {
     if (!user) return;
 
+    setTasksLoading(true);
+
     const res = await fetch(`/api/tasks?userId=${user.uid}`);
     const data = await res.json();
+
     setTasks(data);
+    setTasksLoading(false);
   }
 
   useEffect(() => {
@@ -74,7 +80,11 @@ export default function DashboardPage() {
   });
 
   if (loading) {
-    return <p className="text-center py-6">Loading...</p>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="h-12 w-12 border-4 border-[#668962] border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
   }
 
   if (!user) {
@@ -103,11 +113,15 @@ export default function DashboardPage() {
         </div>
 
         <div className="bg-[#F9F9F8] p-4 rounded-lg border border-[#E5E5E4]">
-          <TaskList
-            tasks={filtered}
-            toggleTask={toggleTask}
-            deleteTask={deleteTask}
-          />
+          {tasksLoading ? (
+            <div className="animate-spin h-6 w-6 border-4 border-[#668962] border-t-transparent rounded-full"></div>
+          ) : (
+            <TaskList
+              tasks={filtered}
+              toggleTask={toggleTask}
+              deleteTask={deleteTask}
+            />
+          )}
         </div>
       </div>
     </main>
