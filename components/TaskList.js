@@ -2,7 +2,7 @@
 
 import TaskItem from "./TaskItem";
 
-export default function TaskList({ tasks, toggleTask, deleteTask }) {
+export default function TaskList({ tasks, toggleTask, deleteTask, editTask }) {
   if (tasks.length === 0) {
     return (
       <p className="text-center text-[#6F6049] py-6 italic">
@@ -19,6 +19,7 @@ export default function TaskList({ tasks, toggleTask, deleteTask }) {
           task={task}
           toggleTask={toggleTask}
           deleteTask={deleteTask}
+          editTask={editTask}
         />
       ))}
     </ul>

@@ -73,6 +73,20 @@ export default function DashboardPage() {
     loadTasks();
   }
 
+  async function editTask(id, newText) {
+    console.log("EDIT CLICKED →", id, newText);
+
+    const res = await fetch(`/api/tasks/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: newText }),
+    });
+
+    console.log("EDIT RESPONSE STATUS:", res.status);
+    
+    loadTasks();
+  }
+
   const filtered = tasks.filter((task) => {
     if (filter === "completed") return task.completed;
     if (filter === "uncomplete") return !task.completed;
@@ -120,6 +134,7 @@ export default function DashboardPage() {
               tasks={filtered}
               toggleTask={toggleTask}
               deleteTask={deleteTask}
+              editTask={editTask}
             />
           )}
         </div>

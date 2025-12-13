@@ -2,10 +2,13 @@ import { adminDb } from "@/utils/firebaseAdmin";
 
 export async function PATCH(req, context) {
   const { id } = await context.params;
-  const { completed } = await req.json();
+  const body = await req.json();
 
-  await adminDb.collection("tasks").doc(id).update({ completed });
+  const updateData = {};
+  if ('completed' in body) updateData.completed = body.completed;
+  if ('text' in body) updateData.text = body.text;
 
+  await adminDb.collection("tasks").doc(id).update(updateData);
   return new Response("Updated", { status: 200 });
 }
 
