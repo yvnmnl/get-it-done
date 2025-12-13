@@ -14,7 +14,7 @@ export default function DashboardPage() {
   const [tasksLoading, setTasksLoading] = useState(true);
 
   const [tasks, setTasks] = useState([]);
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("uncomplete");
 
   useEffect(() => {
     if (!loading && !user) {
