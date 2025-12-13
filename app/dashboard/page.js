@@ -75,7 +75,7 @@ export default function DashboardPage() {
 
   const filtered = tasks.filter((task) => {
     if (filter === "completed") return task.completed;
-    if (filter === "pending") return !task.completed;
+    if (filter === "uncomplete") return !task.completed;
     return true;
   });
 

@@ -10,12 +10,12 @@ export default function FilterButtons({ filter, setFilter }) {
   return (
     <div className="flex gap-3 justify-center">
       <button
-        className={`${base} ${filter === "all" ? active : inactive}`}
-        onClick={() => setFilter("all")}
+        className={`${base} ${filter === "uncomplete" ? active : inactive}`}
+        onClick={() => setFilter("uncomplete")}
       >
-        All
+        To Do
       </button>
-
+      
       <button
         className={`${base} ${filter === "completed" ? active : inactive}`}
         onClick={() => setFilter("completed")}
@@ -24,10 +24,10 @@ export default function FilterButtons({ filter, setFilter }) {
       </button>
 
       <button
-        className={`${base} ${filter === "pending" ? active : inactive}`}
-        onClick={() => setFilter("pending")}
+        className={`${base} ${filter === "all" ? active : inactive}`}
+        onClick={() => setFilter("all")}
       >
-        Pending
+        All
       </button>
     </div>
   );
