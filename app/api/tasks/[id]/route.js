@@ -7,6 +7,7 @@ export async function PATCH(req, context) {
   const updateData = {};
   if ('completed' in body) updateData.completed = body.completed;
   if ('text' in body) updateData.text = body.text;
+  if ('notes' in body) updateData.notes = body.notes;
 
   await adminDb.collection("tasks").doc(id).update(updateData);
   return new Response("Updated", { status: 200 });

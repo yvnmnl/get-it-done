@@ -22,7 +22,7 @@ export async function GET(req) {
 }
 
 export async function POST(req) {
-  const { text, userId } = await req.json();
+  const { text, notes, userId } = await req.json();
 
   if (!text || !userId) {
     return new Response("Missing fields", { status: 400 });
@@ -30,6 +30,7 @@ export async function POST(req) {
 
   const docRef = await adminDb.collection("tasks").add({
     text,
+    notes: notes || "",
     userId,
     completed: false,
     createdAt: Date.now(),

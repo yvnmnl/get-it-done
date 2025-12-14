@@ -38,11 +38,11 @@ export default function DashboardPage() {
     if (user) loadTasks();
   }, [user]);
 
-  async function addTask(text) {
+  async function addTask(text, notes) {
     if (!user) return;
     await fetch("/api/tasks", {
       method: "POST",
-      body: JSON.stringify({ text, userId: user.uid }),
+      body: JSON.stringify({ text, notes, userId: user.uid }),
     });
     loadTasks();
   }
@@ -73,13 +73,13 @@ export default function DashboardPage() {
     loadTasks();
   }
 
-  async function editTask(id, newText) {
-    console.log("EDIT CLICKED →", id, newText);
+  async function editTask(id, newText, newNotes) {
+    console.log("EDIT CLICKED →", id, newText, newNotes);
 
     const res = await fetch(`/api/tasks/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: newText }),
+      body: JSON.stringify({ text: newText, notes: newNotes }),
     });
 
     console.log("EDIT RESPONSE STATUS:", res.status);
