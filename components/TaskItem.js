@@ -30,7 +30,7 @@ export default function TaskItem({ task, toggleTask, deleteTask, editTask }) {
             if (e.key === "Enter") handleEdit();
             if (e.key === "Escape") handleCancel();
           }}
-          className="flex-1 min-w-[200px] px-2 py-1 border border-[#E5E5E4] rounded focus:outline-none focus:border-[#668962]"
+          className="flex-1 min-w-[200px] px-2 py-1 border border-[#E5E5E4] rounded focus:outline-none focus:border-[#668962] text-[#1E1E1E]"
           autoFocus
         />
 
@@ -38,7 +38,7 @@ export default function TaskItem({ task, toggleTask, deleteTask, editTask }) {
           value={editNotes}
           onChange={(e) => setEditNotes(e.target.value)}
           placeholder="Add Notes (optional)"
-          className="flex-1 min-w-[200px] px-2 py-1 border border-[#E5E5E4] rounded focus:outline-none focus:border-[#668962] resize-none"
+          className="flex-1 min-w-[200px] px-2 py-1 border border-[#E5E5E4] rounded focus:outline-none focus:border-[#668962] resize-none text-[#1E1E1E]"
           rows="1"
         />
 
